@@ -1,0 +1,22 @@
+﻿@model VinoViewModel
+<h1>Agregar nuevo Vino</h1>
+<form enctype="multipart/form-data" method="post">
+    <div class="form-group">
+        <label asp-for="Nombre">Nombre</label>
+        <input class="form-control" asp-for="Nombre" />
+    </div>
+    <div class="form-group">
+        <label asp-for="PrecioVenta">Precio de venta</label>
+        <input class="form-control" asp-for="PrecioVenta" />
+    </div>
+    <div class="form-group">
+        <label asp-for="IdBodega">Id Bodega</label>
+        <input class="form-control" asp-for="IdBodega" />
+    </div>
+    <div class="form-group">
+        <input class="form-control-file" asp-for="Imagen"/>
+    </div>
+    <div class="form-control-group">
+        <button type="submit" class="btn btn-primary">Submit </button>
+    </div>
+</form>

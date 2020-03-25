@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Vino>
+<div>
+    <h1>Vinos</h1>
+</div>
+<div class="container">
+    <table class="table">
+        <thead class="table-danger">
+            <tr>
+                <th class="md-2">Nombre</th>
+                <th class="md-2">Precio Venta</th>
+                <th class="md-2">Bodega</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var v in Model)
+            {
+                <tr>
+                    <td class="md-2">@v.Nombre</td>
+                    <td class="md-2">AR$ @v.PrecioVenta</td>
+                    <td class="md-2">@v.IdBodega</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
