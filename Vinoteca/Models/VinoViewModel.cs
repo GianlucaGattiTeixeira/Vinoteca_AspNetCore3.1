@@ -9,10 +9,12 @@ namespace Vinoteca.Models
 {
     public class VinoViewModel
     {
+        public int Id { get; set; }
         public string Nombre { get; set; }
         public double PrecioVenta { get; set; }
         public int IdBodega { get; set; }
         public IFormFile Imagen {get; set;}
+        public string imgDataURL { get; set; }
         public Byte[] TransformToByteArray()
         {
             using (var memoryStream = new MemoryStream())
@@ -24,6 +26,12 @@ namespace Vinoteca.Models
                 }
             }
             return null;
+        }
+        public string ConvertByteArrayToString(byte[] bytearray)
+        {
+            string imreBasa64data = Convert.ToBase64String(bytearray);
+            string imgDataURL = string.Format("data:image/png;base64,{0}", imreBasa64data);
+            return imgDataURL;
         }
     }
 

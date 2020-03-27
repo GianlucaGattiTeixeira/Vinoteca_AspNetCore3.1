@@ -37,8 +37,24 @@ namespace Vinoteca.Controllers
         }
         public IActionResult Listado() 
         {
-            IEnumerable<Vino> listado = _VinotecaData.GetAllVinos();
-
+            IEnumerable<Vino> vinos = _VinotecaData.GetAllVinos();
+            List<VinoViewModel> listado = new List<VinoViewModel>();
+            foreach (var v in vinos)
+            {
+                var vino = new VinoViewModel
+                {
+                    Nombre = v.Nombre,
+                    Id = v.Id,
+                    PrecioVenta = v.PrecioVenta,
+                    IdBodega = v.IdBodega,
+                    imgDataURL = null
+                };
+                if (v.Imagen != null)
+                {
+                    vino.imgDataURL = vino.ConvertByteArrayToString(v.Imagen);
+                }
+                listado.Add(vino);
+            }
             return View(listado);
         }
         //este deberia ser el listado
