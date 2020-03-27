@@ -8,6 +8,6 @@ namespace Vinoteca.Core
         public string Nombre { get; set; }
         public double PrecioVenta { get; set; }
         public int IdBodega { get; set; }
-        //public byte Imagen { get; set; }
+        public byte[] Imagen { get; set; }
     }
 }

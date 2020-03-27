@@ -52,11 +52,12 @@ namespace Vinoteca.Controllers
             {
                 if (vino.Imagen != null)
                 {
-                    var uploadFolder = Path.Combine(_host.WebRootPath, "images");
-                    var nombreArchivoIngresado = Path.GetFileName(vino.Imagen.FileName);
-                    var uniqueFileName = Guid.NewGuid().ToString() + "_" + nombreArchivoIngresado;
-                    var filePath = Path.Combine(uploadFolder, uniqueFileName);
-                    vino.Imagen.CopyTo(new FileStream(filePath, FileMode.Create));
+                    //var uploadFolder = Path.Combine(_host.WebRootPath, "images");
+                    //var nombreArchivoIngresado = Path.GetFileName(vino.Imagen.FileName);
+                    //var uniqueFileName = Guid.NewGuid().ToString() + "_" + nombreArchivoIngresado;
+                    //var filePath = Path.Combine(uploadFolder, uniqueFileName);
+                    //vino.Imagen.CopyTo(new FileStream(filePath, FileMode.Create));
+                    byte[] bitearray = vino.TransformToByteArray();
                 }
                 var dbVino = new Vino()
                 {
@@ -64,6 +65,7 @@ namespace Vinoteca.Controllers
                     PrecioVenta = vino.PrecioVenta,
                     IdBodega = vino.IdBodega,
                 };
+                
                 _VinotecaData.AddVino(dbVino);
                 _VinotecaData.Commit();
             }

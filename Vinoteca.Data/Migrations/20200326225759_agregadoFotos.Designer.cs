@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vinoteca.Data;
 
 namespace Vinoteca.Data.Migrations
 {
     [DbContext(typeof(VinotecaDbContext))]
-    partial class VinotecaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200326225759_agregadoFotos")]
+    partial class agregadoFotos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,9 +48,6 @@ namespace Vinoteca.Data.Migrations
 
                     b.Property<int>("IdBodega")
                         .HasColumnType("int");
-
-                    b.Property<byte[]>("Imagen")
-                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
