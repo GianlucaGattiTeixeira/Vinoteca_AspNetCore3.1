@@ -60,10 +60,13 @@ namespace Vinoteca.Controllers
         //este deberia ser el listado
         [HttpGet]
         public IActionResult Vino() {
+            var IdBodegas = _VinotecaData.GetAllIdBodegas();
+            ViewData["Ids"] = IdBodegas;
             return View();
         }
         [HttpPost]
         public IActionResult Vino(VinoViewModel vino) {
+            byte[] bytearray = null;
             if (ModelState.IsValid)
             {
                 if (vino.Imagen != null)
@@ -73,18 +76,21 @@ namespace Vinoteca.Controllers
                     //var uniqueFileName = Guid.NewGuid().ToString() + "_" + nombreArchivoIngresado;
                     //var filePath = Path.Combine(uploadFolder, uniqueFileName);
                     //vino.Imagen.CopyTo(new FileStream(filePath, FileMode.Create));
-                    byte[] bitearray = vino.TransformToByteArray();
+                    bytearray = vino.TransformToByteArray();
                 }
                 var dbVino = new Vino()
                 {
                     Nombre = vino.Nombre,
                     PrecioVenta = vino.PrecioVenta,
                     IdBodega = vino.IdBodega,
+                    Imagen = bytearray
                 };
                 
                 _VinotecaData.AddVino(dbVino);
                 _VinotecaData.Commit();
             }
+            var IdBodegas = _VinotecaData.GetAllIdBodegas();
+            ViewData["Ids"] = IdBodegas;
             return View();
         }
 

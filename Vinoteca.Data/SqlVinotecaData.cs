@@ -32,6 +32,12 @@ namespace Vinoteca.Data
             return vino;
         }
 
+        public List<int> GetAllIdBodegas() // que pasa si quiero retrivear un array de int
+        {
+            List<int> Ids = _ctx.Bodegas.Select(b => b.Id).ToList();
+            return Ids;
+        }
+
         public IEnumerable<Vino> GetAllVinos()
         {
             return _ctx.Vinos.ToList();

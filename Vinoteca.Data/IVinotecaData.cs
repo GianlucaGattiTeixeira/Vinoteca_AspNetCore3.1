@@ -12,6 +12,7 @@ namespace Vinoteca.Data
         Vino UpdateVino(Vino vino);
         Vino AddVino(Vino Vino);
         Vino DeleteVino(int id);
+        List<int> GetAllIdBodegas();
         int Commit();
     }
 }
