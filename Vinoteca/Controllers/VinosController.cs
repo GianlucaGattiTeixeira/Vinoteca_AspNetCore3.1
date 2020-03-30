@@ -8,10 +8,9 @@ using Vinoteca.Data;
 
 namespace Vinoteca.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[Controller]")]
     public class VinosController : Controller
     {
-        
         private readonly IVinotecaData _VinotecaData;
         public VinosController(IVinotecaData VinotecaData)
         {
